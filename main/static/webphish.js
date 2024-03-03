@@ -19,7 +19,6 @@ function getdata() {
 $(form_id).submit(function (e) {
     e.preventDefault();
     data = $(form_id).serializeArray()
-    console.log(data)
     send_data(data)
 });
 
@@ -31,12 +30,9 @@ function send_data(data) {
         data: { 'data': JSON.stringify(data) },
         dataType: "json",
         success: function (response) {
-            // Handle success response
             console.log(response)
+            window.location.href = response["status"];
         },
-        error: function (xhr, textStatus, error) {
-            // Handle error response
-
-        }
+       
     });
 }

@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import redirect, render, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import requests,json
 from urllib.parse import urlparse
@@ -41,6 +41,6 @@ def save_data(request):
             ip = request.META['REMOTE_ADDR'],
         )
         data_obj.save()
-    return HttpResponse("{satus:'ok'}")
-
+    # return HttpResponse("{'status':'"+Target.objects.first().redirect_url+"'}")
+    return redirect("https://example.com/")
 
