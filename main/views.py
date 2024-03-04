@@ -7,6 +7,9 @@ from . models import Target,Data
 
 def index(request):
     target = Target.objects.first()
+    if target == None:
+        return redirect("/admin")
+
     resp = requests.get(target.url)
     html = resp.text.replace('''"/''',f'''"https://{urlparse(target.url).netloc}/''')
 
