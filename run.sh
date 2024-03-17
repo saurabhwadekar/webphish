@@ -7,7 +7,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 
-echo "installing pakeges for WwbPhish"
+echo "installing pakeges for WebPhish"
 
 # this script tested only garuda linux
 
